@@ -1,0 +1,37 @@
+# Virtual environment
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local-only files
+specification original do not delete.md
+plan.md
