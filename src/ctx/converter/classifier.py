@@ -25,8 +25,11 @@ def classify(result: ExtractionResult) -> str:
 
     meta = result.meta
 
-    # JSON-LD type
-    jsonld = meta.get("jsonld_type", "").lower()
+    # JSON-LD type (may be a list if multiple schemas present)
+    jsonld_raw = meta.get("jsonld_type", "")
+    if isinstance(jsonld_raw, list):
+        jsonld_raw = jsonld_raw[0] if jsonld_raw else ""
+    jsonld = str(jsonld_raw).lower()
     if jsonld in ("article", "newsarticle", "blogposting", "reportage"):
         scores["article"] += 3.0
     elif jsonld in ("product", "offer"):
