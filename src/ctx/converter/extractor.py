@@ -96,7 +96,9 @@ def extract(html: str, url: str = "", tier: str = "fast") -> ExtractionResult:
     if not readability_ok:
         body = soup.find("body") or soup
         content_soup = BeautifulSoup(str(body), "lxml")
-
+    # Clean math markup before extraction
+    _strip_math_annotations(content_soup)
+    
     # Extract forms from the FULL soup (readability strips them)
     _extract_forms(soup, result, url)
 
@@ -371,9 +373,6 @@ def _extract_input(tag: Tag, form_method: str, form_action: str) -> CTXBlock | N
         return CTXBlock(block_type="button", subtype=btn_type, attributes=attrs_btn)
 
     return None
-
-    # Clean math markup before extraction
-    _strip_math_annotations(content_soup)
 
 def _extract_tables(soup: BeautifulSoup, result: ExtractionResult) -> None:
     for table in soup.find_all("table"):
