@@ -13,7 +13,28 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup, NavigableString, Tag, XMLParsedAsHTMLWarning
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+def _strip_math_annotations(soup: BeautifulSoup) -> None:
+    """Strip LaTeX annotations from Wikipedia-style math elements.
 
+    Wikipedia renders math as <span class="mwe-math-element"> containing both
+    a <math> tree with <annotation encoding="application/x-tex"> and a fallback
+    <img> with LaTeX in the alt text. We keep only the rendered math symbols
+    and discard the raw LaTeX source.
+    """
+    # Kill all <annotation> tags (LaTeX source like {\displaystyle E})
+    for ann in soup.find_all("annotation"):
+        ann.decompose()
+
+    # Kill math fallback images whose alt is LaTeX
+    for img in soup.find_all("img", class_="mwe-math-fallback-image-inline"):
+        img.decompose()
+    for img in soup.find_all("img", class_="mwe-math-fallback-image-display"):
+        img.decompose()
+
+    # Unwrap <math> and <semantics> tags — keep their text children
+    for tag_name in ("semantics", "math"):
+        for tag in soup.find_all(tag_name):
+            tag.unwrap()
 from readability import Document as ReadabilityDoc
 
 from ..models import CTXBlock
@@ -351,6 +372,8 @@ def _extract_input(tag: Tag, form_method: str, form_action: str) -> CTXBlock | N
 
     return None
 
+    # Clean math markup before extraction
+    _strip_math_annotations(content_soup)
 
 def _extract_tables(soup: BeautifulSoup, result: ExtractionResult) -> None:
     for table in soup.find_all("table"):
