@@ -317,4 +317,4 @@ This implementation is released under the **Apache License 2.0**. The CTX specif
 
 ---
 
-**Fox Valley AI Foundation** — [foxfoundation.ai](https://foxfoundation.ai) | [github.com/foxvalleyai/ctx-spec](https://github.com/foxvalleyai/ctx-spec)
+**Fox Valley AI Foundation** — [foxfoundation.ai](https://foxfoundation.ai) | [github.com/mtecnic/ctx](https://github.com/mtecnic/ctx)

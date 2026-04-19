@@ -12,7 +12,7 @@ CTX (Context Transfer Format) is a universal interchange format designed for opt
 
 CTX is not a rendering format. It does not replace HTML for browsers or PDF for print. It is the **content layer between the web and AI** — optimized for how transformers tokenize, attend, and reason.
 
-**Repository**: github.com/foxvalleyai/ctx-spec
+**Repository**: github.com/mtecnic/ctx
 **Contact**: foxfoundation.ai
 
 ---
@@ -873,7 +873,7 @@ As of v1.0, the core grammar (delimiters, block types, depth markers, attribute 
 
 ### 20.2 Content Type Registry
 
-The Fox Valley AI Foundation maintains a living registry of `§content.*` subtypes at github.com/foxvalleyai/ctx-spec/registry. Community members may propose new subtypes via pull request. Subtypes in the registry are documented but not mandated — parsers MUST treat any unknown subtype as `§content.reference`.
+The Fox Valley AI Foundation maintains a living registry of `§content.*` subtypes in the `registry/` directory of the reference repository (github.com/mtecnic/ctx). Community members may propose new subtypes via pull request. Subtypes in the registry are documented but not mandated — parsers MUST treat any unknown subtype as `§content.reference`.
 
 ### 20.3 Custom Metadata
 
@@ -994,4 +994,4 @@ Stable at 172 MB under sustained load, zero growth across 100 consecutive conver
 
 This specification is released under **CC BY 4.0**. The reference implementation is licensed under the **Apache License 2.0**.
 
-**Fox Valley AI Foundation** — foxfoundation.ai | github.com/foxvalleyai/ctx-spec
+**Fox Valley AI Foundation** — foxfoundation.ai | github.com/mtecnic/ctx
