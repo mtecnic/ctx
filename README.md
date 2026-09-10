@@ -30,7 +30,7 @@ A typical Wikipedia article drops from **1.2 MB of raw HTML to 150 KB of CTX** â
 
 ```bash
 # Clone and set up
-git clone https://github.com/foxvalleyai/ctx.git
+git clone https://github.com/mtecnic/ctx.git
 cd ctx
 python3 -m venv venv
 source venv/bin/activate
