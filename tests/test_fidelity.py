@@ -6,7 +6,7 @@ both the original HTML and the CTX output, and compares them side-by-side
 to verify no meaningful content is lost.
 
 Usage:
-    cd /home/dev-ai/ctx
+    cd ~/ctx
     venv/bin/python tests/test_fidelity.py
 """
 

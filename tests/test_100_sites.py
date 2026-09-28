@@ -5,7 +5,7 @@ Tests the CTX converter across 100 diverse real-world websites,
 captures pass/fail/partial/error results, and generates a report.
 
 Usage:
-    cd /home/dev-ai/ctx
+    cd ~/ctx
     venv/bin/python tests/test_100_sites.py
 """
 
